@@ -1,7 +1,9 @@
+#include "screen.h"
+
 void
 kernel_main(void)
 {
-	char *video_mem = (char*)0xB8000;
-
-	*video_mem = 'Z';
+	screen_clear();
+	screen_print(4, "abcd");
+	screen_print(4, "abcd");
 }
