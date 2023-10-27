@@ -1,6 +1,8 @@
 #ifndef _TYPES_H_
 #define _TYPES_H_
 
+#define NULL ((void*)0)
+
 typedef char 	s8;
 typedef short 	s16;
 typedef int 	s32;

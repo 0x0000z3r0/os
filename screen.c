@@ -66,7 +66,7 @@ screen_clear(void)
 }
 
 void
-screen_print_char(char sym)
+screen_print_char(s8 sym)
 {
 	u8 *mem;
 	mem = (u8*)SCREEN_ADDRESS;
@@ -74,10 +74,18 @@ screen_print_char(char sym)
 	u16 off;
 	off = screen_cur_get();
 
-	mem[off * 2 + 0] = sym;
-	mem[off * 2 + 1] = SCREEN_WHITE_BLACK;
+	if (sym == '\n') {
+		u16 row;
+		row = (off / SCREEN_COLS) + 1;
+
+		off = row * (SCREEN_COLS);
+	} else {
+		mem[off * 2 + 0] = sym;
+		mem[off * 2 + 1] = SCREEN_WHITE_BLACK;
 	
-	++off;
+		++off;
+	}
+	
 	screen_cur_set(off);
 }
 

@@ -7,6 +7,9 @@ void
 screen_clear(void);
 
 void
+screen_print_char(s8);
+
+void
 screen_print(u16, s8*);
 
 #endif
